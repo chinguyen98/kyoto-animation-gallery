@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<link href="https://fonts.googleapis.com/css?family=Amatic+SC&display=swap" rel="stylesheet">
+	<title>Image Gallery - VanillaJS</title>
+</head>
+
+<body>
+
+	<div class="panels">
+		<div class="panel panel1">
+			<p>ok</p>
+			<p>let's</p>
+			<p>reborn</p>
+		</div>
+		<div class="panel panel2">
+			<p>give</p>
+			<p>make</p>
+			<p>receive</p>
+		</div>
+		<div class="panel panel3">
+			<p>beautiful</p>
+			<p>kyoto</p>
+			<p>scene</p>
+		</div>
+		<div class="panel panel4">
+			<p>gorgeous</p>
+			<p>animation</p>
+			<p>creation</p>
+		</div>
+		<div class="panel panel5">
+			<p>enormous</p>
+			<p>great</p>
+			<p>felling</p>
+		</div>
+		<div class="panel panel6">
+			<p>stand</p>
+			<p>again</p>
+			<p>please</p>
+		</div>
+		
+	</div>
+	
+
+	<style>
+		html {
+			box-sizing: border-box;
+			background-color: #FFC600;
+			font-family: 'Amatic SC', cursive;
+			font-size: 20px;
+			font-weight: bold;
+		}
+
+		body {
+			margin: 0;
+			padding: 0;
+		}	
+
+		*,
+		*::after,
+		*::before {
+			box-sizing: inherit;
+		}
+
+		.panels {
+			min-height: 100vh;
+			overflow: hidden;
+			display: flex;
+		}
+
+		.panel {
+			background-color: #6B09FC;
+			box-shadow: inset 0 0 0 5px rgba(255, 255, 255, 0.1);
+			color: white;
+			text-shadow: 5px 5px 5px black;
+			text-align: center;
+			transition:
+				font-size 0.7s cubic-bezier(0.61, -0.19, 0.7.-0.11),
+				flex 0.7s cubic-bezier(0.61, -0.19, 0.7.-0.11),
+				background 0.2s;
+			font-size: 20px;
+			flex-grow: 1;
+			justify-content: center;
+			align-items: center;
+			display: flex;
+			flex-direction: column;
+			transition: all 1s;
+			background-size: cover;
+		}
+
+		.panel>* {
+			margin: 0;
+			width: 100%;
+			transition: transform 0.5s;
+			flex: 1;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+
+		.panel p {
+			text-transform: uppercase;
+			font-size: 2em;
+		}
+
+		.panel p:first-child {
+			transform: translateY(-100%)
+		}
+
+		.panel p:last-child {
+			transform: translateY(100%);
+		}
+
+		.panel.open-active p:first-child {
+			transform: translateY(0)
+		}
+
+		.panel.open-active p:last-child {
+			transform: translateY(0)
+		}
+
+		.panel p:nth-child(2) {
+			font-size: 4em;
+		}
+
+		.panel.open {
+			font-size: 40px;
+			flex-grow: 10;
+		}
+
+		.panel.panel1 {
+			background-image: url('./img/KoeNoKatachi.jpg');
+		}
+
+		.panel.panel2 {
+			background-image: url('./img/Tamako.png')
+		}
+
+		.panel.panel3 {
+			background-image: url('./img/KOn.jpg');
+		}
+
+		.panel.panel4 {
+			background-image: url('./img/KyoukainoKanata.jpg');
+		}
+
+		.panel.panel5 {
+			background-image: url('./img/Hyouka.jpg')
+		}
+
+		.panel.panel6 {
+			background-image: url('./img/VioletEvergarden.jpg');
+		}
+	</style>
+
+	<script>
+		const panels = document.querySelectorAll('.panel');
+
+		function toggleOpen() {
+			if (this.classList.contains('open')) {
+				this.classList.remove('open');
+				this.classList.remove('open-active');
+			} else {
+				panels.forEach(panel => panel.classList.remove('open'));
+				panels.forEach(panel => panel.classList.remove('open-active'));
+				this.classList.add('open-active');
+				this.classList.toggle('open');
+			}
+		};
+
+		panels.forEach(panel => panel.addEventListener('click', toggleOpen));
+
+	</script>
+</body>
+
+</html>
